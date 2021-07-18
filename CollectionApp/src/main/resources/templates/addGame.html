@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Game Collection - Add Game</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link href="css/style.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h1>
+          Game Collection<small><em> More Games!</em></small>
+        </h1>
+      </div>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" href="index">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="collection">Collection</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="add">Add Game</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="update">Update Data</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row m-4">
+    <h3>Add <span th:text="${game.productName}">game name</span>:</h3>
+  </div>
+</div>
+
+<div class="container">
+  <div class="col-6 text-center m-3">
+    <form action="addGame" method="POST">
+
+      <div class="form-group row">
+        <label for="gameId" class="col-3 col-form-label"><strong>VGPC ID:</strong></label>
+        <div class="col-9">
+          <input type="text" name="gameId" id="gameId" class="form-control" th:value="${game.id}" readonly>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="productName" class="col-3 col-form-label"><strong>Name:</strong></label>
+        <div class="col-9">
+          <input type="text" name="productName" id="productName" class="form-control" th:value="${game.productName}" readonly>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="consoleName" class="col-3 col-form-label"><strong>Console:</strong></label>
+        <div class="col-9">
+          <input type="text" name="consoleName" id="consoleName" class="form-control" th:value="${game.consoleName}" readonly>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="releaseDate" class="col-3 col-form-label"><strong>Released:</strong></label>
+        <div class="col-9">
+          <input type="text" name="releaseDate" id="releaseDate" class="form-control" th:value="${game.releaseDate}" readonly>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="newPrice" class="col-3 col-form-label"><strong>New Price:</strong></label>
+        <div class="col-9">
+          <input type="text" name="newPrice" id="newPrice" class="form-control" th:checkbox="${newPrice}" th:value="'$'+${newPrice}" readonly>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="cibPrice" class="col-3 col-form-label"><strong>CIB Price:</strong></label>
+        <div class="col-9">
+          <input type="text" name="cibPrice" id="cibPrice" class="form-control" th:value="'$'+${cibPrice}" readonly>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="loosePrice" class="col-3 col-form-label"><strong>Loose Price:</strong></label>
+        <div class="col-9">
+          <input type="text" name="loosePrice" id="loosePrice" class="form-control" th:value="'$'+${loosePrice}" readonly>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="isNew" class="col-3 col-form-label"><strong>New in Box:</strong></label>
+        <div class="col-md-4">
+          <input type="checkbox" name="isNew" id="isNew" class="form-control" th:value="${game.isNew}">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="haveGame" class="col-3 col-form-label"><strong>Have Game:</strong></label>
+        <div class="col-md-4">
+          <input type="checkbox" name="haveGame" id="haveGame" class="form-control" th:value="${game.haveGame}">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="haveBox" class="col-3 col-form-label"><strong>Have Box:</strong></label>
+        <div class="col-md-4">
+          <input type="checkbox" name="haveBox" id="haveBox" class="form-control" th:value="${game.haveBox}">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="haveManual" class="col-3 col-form-label"><strong>Have Manual:</strong></label>
+        <div class="col-md-4">
+          <input type="checkbox" name="haveManual" id="haveManual" class="form-control" th:value="${game.haveManual}">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Add To Collection</button>
+      <a href="add" class="btn btn-danger" role="button">Cancel</a>
+
+    </form>
+  </div>
+</div>
+
+
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>

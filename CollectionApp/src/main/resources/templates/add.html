@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Game Collection - Search</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link href="css/style.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h1>
+          Game Collection<small><em> More Games!</em></small>
+        </h1>
+      </div>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" href="index">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="collection">Collection</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="add">Add Game</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="update">Update Data</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="col-6 text-center m-3">
+    <form action="gameSearch" method="POST">
+      <div class="form-group row">
+        <label for="searchTerms" class="col-form-label">Game Search</label>
+        <div class="col-8">
+          <input type="text" name="searchTerms" id="searchTerms" class="form-control" required>
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!--No Results-->
+<div th:if="${noResults}" class="container-fluid">
+  <h3>No Results - Try different search terms.</h3>
+</div>
+
+<!--Games List-->
+<div th:if="${searchDone}" class="container-fluid">
+  <div class="row m-4">
+    <div class="col text-center m-3 table-responsive">
+      <table class="table table-striped table-fixed table-hover table-condensed" style="border:0px;">
+        <thead style="display:table-header-group">
+        <tr>
+          <th>VGPC ID</th>
+          <th>Title</th>
+          <th>Console</th>
+          <th>Release Date</th>
+          <th>Add</th>
+        </tr>
+        </thead>
+        <tbody class="tbody text-center" style="display:table-row-group">
+        <tr th:each="SearchResult: ${results}">
+          <td th:text="${SearchResult.gameId}">ID</td>
+          <td th:text="${SearchResult.gameName}">Name</td>
+          <td th:text="${SearchResult.consoleName}">Console</td>
+          <td th:text="${SearchResult.releaseDate}">Release Date</td>
+          <td><a href="#" th:href="@{/addGame(id=${SearchResult.gameId})}">Add</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>

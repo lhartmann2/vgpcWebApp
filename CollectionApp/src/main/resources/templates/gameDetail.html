@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Game Collection - Details</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link href="css/style.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h1>
+          Game Collection<small><em> More Games!</em></small>
+        </h1>
+      </div>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" href="index">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="collection">Collection</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="add">Add Game</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="update">Update Data</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row m-4">
+    <h3>Details for <span th:text="${game.productName}">game name</span>:</h3>
+  </div>
+</div>
+
+<div class="container">
+  <ul class="list-group">
+    <li class="list-group-item"><strong>VGPC ID:&nbsp;&nbsp;&nbsp;&nbsp;</strong><span th:text="${game.id}">ID</span></li>
+    <li class="list-group-item"><strong>Name:&nbsp;&nbsp;&nbsp;&nbsp;</strong><span th:text="${game.productName}">Name</span></li>
+    <li class="list-group-item"><strong>Console:&nbsp;&nbsp;&nbsp;&nbsp;</strong><span th:text="${game.consoleName}">Console</span></li>
+    <li class="list-group-item"><strong>Released:&nbsp;&nbsp;&nbsp;&nbsp;</strong><span th:text="${game.releaseDate}">Release Date</span></li>
+    <li class="list-group-item"><strong>New in Box:&nbsp;&nbsp;&nbsp;&nbsp;</strong><span th:text="${game.isNew}">Is New</span></li>
+    <li class="list-group-item"><strong>Have Game:&nbsp;&nbsp;&nbsp;&nbsp;</strong><span th:text="${game.haveGame}">Has Game</span></li>
+    <li class="list-group-item"><strong>Have Box:&nbsp;&nbsp;&nbsp;&nbsp;</strong><span th:text="${game.haveBox}">Has Box</span></li>
+    <li class="list-group-item"><strong>Have Manual:&nbsp;&nbsp;&nbsp;&nbsp;</strong><span th:text="${game.haveManual}">Has Manual</span></li>
+    <li class="list-group-item"><strong>Total Value:&nbsp;&nbsp;&nbsp;&nbsp;</strong>$<span th:text="${game.totalValue}">Total Value</span></li>
+  </ul>
+  <div class="row m-2">
+    <div class="col">
+      <a class="btn btn-secondary" href="collection" role="button">Back</a>
+      <a class="btn btn-primary" href="#" th:href="@{/editGame(id=${game.id})}" role="button">Edit</a>
+      <a class="btn btn-danger" href="#" th:href="@{/deleteGame(id=${game.id})}" role="button">Delete</a>
+    </div>
+  </div>
+</div>
+
+
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>
